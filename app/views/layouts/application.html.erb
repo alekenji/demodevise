@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo_devise</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+ <div id="container">
+  <div id="user_nav">
+     <% if user_signed_in? %>
+       Usuario: <%= current_user.email %> |  
+       <%= link_to I18n.t("logout"), destroy_user_session_path %>
+     <% else %>
+       <%= link_to I18n.t("login"), new_user_session_path %> ou <%= link_to I18n.t("addUser"), new_user_registration_path %>
+     <% end%>  
+  </div>
+  <%= yield %>
+ </div>
+</body>
+</html>
